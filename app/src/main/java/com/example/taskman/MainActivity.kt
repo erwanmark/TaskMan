@@ -8,6 +8,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -55,30 +56,37 @@ class MainActivity : ComponentActivity() {
 @Composable
 @Preview(showBackground = true)
 
- fun Home(){
-     Column(
-         horizontalAlignment = Alignment.CenterHorizontally,
-         verticalArrangement = Arrangement.Center
+ fun Home() {
+    Box(
+        modifier = Modifier.fillMaxSize()
+    ) {
 
-         ,
-         modifier = Modifier
-             .background(Color.Transparent)
-             .fillMaxSize()
-     ) {
-         Text(text = "Welcome to my App", color = Color.Green, fontSize = 30.sp)
-         Spacer(modifier = Modifier.height(12.dp))
+        Image(
+            painter = painterResource(id = R.drawable.pydon), contentDescription = null,
+            modifier = Modifier.fillMaxSize()
+        )
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center,
+            modifier = Modifier
+                .background(Color.Transparent)
+                .fillMaxSize()
+        ) {
+            Text(text = "Welcome to my App", color = Color.Green, fontSize = 30.sp)
+            Spacer(modifier = Modifier.height(12.dp))
 
-         var login = LocalContext.current
+            var login = LocalContext.current
 
-         Button({
-             login.startActivity(Intent(login, LoginActivity::class.java))
-         }
+            Button(onClick =
+            { login.startActivity(Intent(login, LoginActivity::class.java)) }
+            )
+            {
+                Text(text = "LOGIN")
+            }
 
-         ) {
-             Text(text = "LOGIN")
-         }
-        var signup = LocalContext.current
+            var signup = LocalContext.current
 
-     }
- }
+        }
+    }
+}
 

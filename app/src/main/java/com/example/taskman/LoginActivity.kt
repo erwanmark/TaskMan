@@ -10,6 +10,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -56,7 +57,7 @@ class LoginActivity : ComponentActivity() {
 @Composable
 @Preview(showBackground = true)
 
-fun LoginInterface(){
+fun LoginInterface() {
     var username by remember {
         mutableStateOf(TextFieldValue(""))
     }
@@ -66,58 +67,66 @@ fun LoginInterface(){
     var Email by remember {
         mutableStateOf("")
     }
-
-    Column(
-        modifier = Modifier
-            .background(Color.White)
-            .fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+    Box(
+        modifier = Modifier.fillMaxSize()
     ) {
-        Image(painter = painterResource(R.drawable.logo),
-            contentDescription = null,
+
+        Image(
+            painter = painterResource(id = R.drawable.pydon), contentDescription = null,
+            modifier = Modifier.fillMaxSize()
+        )
+
+        Column(
             modifier = Modifier
-                .size(250.dp)
-                .border(3.dp, Color.White))
-
-        Text(text = "Welcome to Blacklist. Please login", color = Color.Black, fontSize = 15.sp)
-
-        var login = LocalContext.current
-
-        Spacer(modifier = Modifier.height(8.dp))
-
-        OutlinedTextField(value = Email,
-            leadingIcon = { Icon(Icons.Default.Email, contentDescription ="email icon" ) },
-            onValueChange = { Email },
-            label = { Text(text = "Email") },
-            modifier = Modifier.fillMaxWidth()
-        )
-
-        Spacer(modifier = Modifier.height(8.dp))
-
-        OutlinedTextField(value = password,
-            leadingIcon = { Icon(Icons.Default.Lock, contentDescription ="password icon" ) },
-            onValueChange = {password = it },
-            label = { Text(text = "password")},
-            modifier = Modifier.fillMaxWidth()
-        )
-
-        Spacer(modifier = Modifier.height(17.dp))
-
-        Button(onClick = { /*TODO*/ },
-            modifier = Modifier.fillMaxWidth()
-
+                .background(Color.Transparent)
+                .fillMaxSize(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(text = "LOGIN")
-        }
-        Button(
-            onClick = { /*TODO*/ },
-            modifier = Modifier.fillMaxWidth()
 
-        ) {
-            Text(text = "SIGN UP")
-        }
 
+            Text(text = "Welcome to Blacklist. Please login", color = Color.Yellow, fontSize = 15.sp)
+
+            var login = LocalContext.current
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            OutlinedTextField(
+                value = Email,
+                leadingIcon = { Icon(Icons.Default.Email, contentDescription = "email icon") },
+                onValueChange = { Email },
+                label = { Text(text = "Email", color = Color.Yellow) },
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            OutlinedTextField(
+                value = password,
+                leadingIcon = { Icon(Icons.Default.Lock, contentDescription = "password icon") },
+                onValueChange = { password = it },
+                label = { Text(text = "password", color = Color.Yellow) },
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            Spacer(modifier = Modifier.height(17.dp))
+
+            Button(
+                onClick = { /*TODO*/ },
+                modifier = Modifier.fillMaxWidth()
+
+            ) {
+                Text(text = "LOGIN")
+            }
+            Button(
+                onClick = { /*TODO*/ },
+                modifier = Modifier.fillMaxWidth()
+
+            ) {
+                Text(text = "SIGN UP")
+            }
+
+        }
     }
 }
 

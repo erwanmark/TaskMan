@@ -4,8 +4,10 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -61,69 +63,71 @@ fun SignupInterface() {
     var Password by remember {
         mutableStateOf("")
     }
+    Box(modifier = Modifier.fillMaxSize()
+    ){
 
-    Column(
+        Image(painter = painterResource(id = R.drawable.pydon) , contentDescription = null,
+            modifier = Modifier.fillMaxSize())
+        Column(
 
-        modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-
-    ) {
-
-        Image(
-            painter = painterResource(R.drawable.logo),
-            contentDescription = null,
             modifier = Modifier
-                .size(250.dp)
-                .border(3.dp, Color.White)
-        )
-
-        Text(text = "Welcome to Blacklist. Please signup", color = Color.Black, fontSize = 15.sp)
-
-
-        OutlinedTextField(
-            value = username,
-            leadingIcon = { Icon(Icons.Default.Person, contentDescription = "username icon") },
-            onValueChange = { username = it },
-            label = { Text(text = "username") },
-            modifier = Modifier.fillMaxWidth()
-        )
-
-        Spacer(modifier = Modifier.height(8.dp))
-
-        OutlinedTextField(
-            value = Email,
-            leadingIcon = { Icon(Icons.Default.Email, contentDescription = "email icon") },
-            onValueChange = { Email },
-            label = { Text(text = "Email") },
-            modifier = Modifier.fillMaxWidth()
-        )
-
-        Spacer(modifier = Modifier.height(8.dp))
-
-        OutlinedTextField(
-            value = Password,
-            leadingIcon = { Icon(Icons.Default.Lock, contentDescription = "password icon") },
-            onValueChange = { Password },
-            label = { Text(text = "Password") },
-            modifier = Modifier.fillMaxWidth()
-        )
-
-        Spacer(modifier = Modifier.height(8.dp))
-
-        Button(
-            onClick = { /*TODO*/ },
-            modifier = Modifier.fillMaxWidth()
+                .fillMaxSize()
+                .background(Color.Transparent),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally,
 
         ) {
-            Text(text = "SIGN UP")
-        }
-        Button(
-            onClick = { /*TODO*/ },
-            modifier = Modifier.fillMaxWidth()
 
-        ) {
-            Text(text = "GO BACK")
+            Text(text = "Welcome to Blacklist. Please signup", color = Color.Yellow, fontSize = 15.sp)
+
+
+            OutlinedTextField(
+                value = username,
+                leadingIcon = { Icon(Icons.Default.Person, contentDescription = "username icon") },
+                onValueChange = { username = it },
+                label = { Text(text = "username", color = Color.Yellow) },
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            OutlinedTextField(
+                value = Email,
+                leadingIcon = { Icon(Icons.Default.Email, contentDescription = "email icon") },
+                onValueChange = { Email },
+                label = { Text(text = "Email", color = Color.Yellow) },
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            OutlinedTextField(
+                value = Password,
+                leadingIcon = { Icon(Icons.Default.Lock, contentDescription = "password icon",) },
+                onValueChange = { Password },
+                label = { Text(text = "Password ", color = Color.Yellow) },
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            Button(
+                onClick = { /*TODO*/ },
+                modifier = Modifier.fillMaxWidth()
+
+            ) {
+                Text(text = "SIGN UP")
+            }
+            Button(
+                onClick = { /*TODO*/ },
+                modifier = Modifier.fillMaxWidth()
+
+            ) {
+                Text(text = "GO BACK")
+            }
         }
+
     }
+
+
 }
